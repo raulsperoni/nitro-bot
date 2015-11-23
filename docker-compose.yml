@@ -1,0 +1,6 @@
+py:
+  image: mgcoders/pymg
+  command: python /root/tbot.py
+  volumes:
+    - .:/root/
+
