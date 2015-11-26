@@ -6,7 +6,7 @@ import json
 
 usuarios = {}
 
-bot = telebot.TeleBot("112649113:AAF8Dsh2prTQZ-6Z13VCr4ELSWjoreckP-4")
+bot = telebot.TeleBot("TOKEN")
 
 def extract_unique_code(text):
     # Extracts the unique_code from the sent /start command.
