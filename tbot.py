@@ -6,7 +6,7 @@ import json
 
 usuarios = {}
 
-bot = telebot.TeleBot("TOKEN")
+bot = telebot.TeleBot("112649113:AAF8Dsh2prTQZ-6Z13VCr4ELSWjoreckP-4")
 
 def extract_unique_code(text):
     # Extracts the unique_code from the sent /start command.
@@ -20,7 +20,7 @@ def get_username_from_storage(unique_code):
     # Does a query to the storage, retrieving the associated username
     response = requests.get('http://localhost:8080/nitro-ws/rest/votantes/'+unique_code)
     assert response.status_code == 200
-    return response.json()["nombre"]
+    return response.content
 
 def save_chat_id(chat_id, unique_code, username):
     # Save the chat_id->token to storage
@@ -30,7 +30,7 @@ def save_chat_id(chat_id, unique_code, username):
 def get_votaciones(chat_id, unique_code):
     response = requests.get('http://localhost:8080/nitro-ws/rest/votacion/'+unique_code+'/'+str(chat_id))
     print response.json()
-    return "Pregunta 1 - \n"+response.json()[0]["pregunta"]
+    return "Pregunta 0 - \n"+response.json()["preguntas"][0]["pregunta"]
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
